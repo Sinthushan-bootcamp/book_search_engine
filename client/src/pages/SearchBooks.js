@@ -7,7 +7,7 @@ import {
   Card,
   Row
 } from 'react-bootstrap';
-
+import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
@@ -77,7 +77,7 @@ const SearchBooks = () => {
     try {
       
       const { data } = addBook({
-        variables: { bookToSave },
+        variables: { book: bookToSave },
       });
       if (!data) {
         throw new Error('something went wrong!');
